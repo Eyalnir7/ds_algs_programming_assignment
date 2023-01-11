@@ -1,5 +1,6 @@
 public class Leaf<T> extends Node<T>{
     private Leaf<T> successor;
+    private Leaf<T> predecessor;
 
     public Leaf<T> getSuccessor() {
         return successor;
@@ -17,16 +18,14 @@ public class Leaf<T> extends Node<T>{
         this.predecessor = predecessor;
     }
 
-    private Leaf<T> predecessor;
-
     public Leaf(T key, Node<T> p, Node<T> left, Node<T> middle, Node<T> right, Leaf<T> successor, Leaf<T> predecessor, Boolean plusInf, Boolean minusInf) {
         super(key, p, left, middle, right, plusInf, minusInf);
         this.successor = successor;
         this.predecessor = predecessor;
     }
 
-    public Leaf(T key, Node<T> p, Leaf<T> successor, Leaf<T> predecessor, Boolean plusInf, Boolean minusInf) {
-        super(key, p, null, null,null, plusInf, minusInf);
+    public Leaf(Node<T> p, Leaf<T> successor, Leaf<T> predecessor, Boolean plusInf, Boolean minusInf) {
+        super(null, p, null, null,null, plusInf, minusInf);
         this.successor = successor;
         this.predecessor = predecessor;
     }

@@ -3,8 +3,8 @@ public abstract class TwoThreeTree<T> {
 
     public TwoThreeTree() {
         this.root = new Node<T>(true, false);
-        Leaf<T> l = new Leaf<T>(root, false, true);
-        Leaf<T> m = new Leaf<T>(Integer.MIN_VALUE, root, null, l);
+        Leaf<T> l = new Leaf<T>(root, null, null, false, true);
+        Leaf<T> m = new Leaf<T>(root, null, l, true, false);
         l.setSuccessor(m);
         root.setLeft(l);
         root.setMiddle(m);
@@ -14,7 +14,11 @@ public abstract class TwoThreeTree<T> {
     //return 0 if node1 = node2
     //return negative if node1 < node2
     public int compareNodes(Node<T> node1, Node<T> node2){
-        return 1;
+        if(node1.getPlusInf()) return 1;
+        if(node1.getMinusInf()) return -1;
+        if(node2.getPlusInf()) return -1;
+        if(node2.getMinusInf()) return 1;
+        return compareKeys(node1.getKey(), node2.getKey());
     }
 
     protected abstract int compareKeys(T key1, T key2);
@@ -76,6 +80,79 @@ public abstract class TwoThreeTree<T> {
         return y;
     }
 
+    public Node<T> borrowOrMerge(Node<T> y){
+        Node<T> z = y.getP();
+        if(compareNodes(y, z.getLeft()) == 0){
+            Node<T> x = z.getMiddle();
+            if(x.getRight()!=null){
+                setChildren(y, y.getLeft(), x.getLeft(), null);
+                setChildren(x, x.getMiddle(), x.getRight(), null);
+            }
+            else{
+                setChildren(x, y.getLeft(), x.getLeft(), x.getMiddle());
+                setChildren(z, x, z.getRight(), null);
+            }
+            return z;
+        }
+        if(compareNodes(y, z.getMiddle()) == 0){
+            Node<T> x = z.getLeft();
+            if(z.getRight() != null){
+                setChildren(y, x.getRight(), y.getLeft(), null);
+                setChildren(x, x.getLeft(), x.getMiddle(), null);
+            }
+            else {
+                setChildren(x, x.getLeft(), x.getMiddle(), y.getLeft());
+                setChildren(z, x, z.getRight(), null);
+            }
+            return z;
+        }
+        Node<T> x = z.getMiddle();
+        if(x.getRight() != null){
+            setChildren(y, x.getRight(), y.getLeft(), null);
+            setChildren(x, x.getLeft(), x.getMiddle(), null);
+        }
+        else{
+            setChildren(x, x.getLeft(), x.getMiddle(), y.getLeft());
+            setChildren(z, z.getLeft(), x, null);
+        }
+        return z;
+    }
+
+    public void Delete(T key){
+        DeleteAux(search(key));
+    }
+
+    public void DeleteAux(Leaf<T> x){
+        Node<T> y = x.getP();
+        x.getPredecessor().setSuccessor(x.getSuccessor());
+        x.getSuccessor().setPredecessor(x.getPredecessor());
+        if(compareNodes(x, y.getLeft()) == 0){
+            setChildren(y, y.getMiddle(), y.getRight(), null);
+        }
+        else if(compareNodes(x, y.getMiddle()) == 0){
+            setChildren(y, y.getLeft(), y.getRight(), null);
+        }
+        else {
+            setChildren(y, y.getLeft(), y.getMiddle(), null);
+        }
+        while(y!=null){
+            if(y.getMiddle()==null){
+                if(compareNodes(y, root) == 0){
+                    borrowOrMerge(y);
+                }
+                else{
+                    setRoot(y.getLeft());
+                    y.getLeft().setP(null);
+                    return;
+                }
+            }
+            else{
+                updateKey(y);
+                y = y.getP();
+            }
+        }
+    }
+
     public void insert(Leaf<T> z){
         Node<T> nextNode = root;
         while(nextNode.getLeft() != null){
@@ -104,8 +181,25 @@ public abstract class TwoThreeTree<T> {
         }
     }
 
-    public Leaf<T> search(){
+    public Leaf<T> search(T key){
+        Node<T> keyNode = new Node<T>(key, null);
+        return searchAux(root, keyNode);
+    }
 
+    private Leaf<T> searchAux(Node<T> x,Node<T> key){
+        if(x.getLeft() == null){
+            if(compareNodes(x, key) == 0){
+                return (Leaf<T>)x;
+            }
+            else return null;
+        }
+        if(compareNodes(key, x.getLeft())<=0){
+            return searchAux(x.getLeft(), key);
+        }
+        else if(compareNodes(key, x.getMiddle())<=0){
+            return searchAux(x.getMiddle(), key);
+        }
+        else return searchAux(x.getRight(), key);
     }
 
     public Node<T> getRoot() {
