@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="Finished the abstract classes and started to build the concrete classes">
-      <change afterPath="$PROJECT_DIR$/src/PlayerTree.java" afterDir="false" />
+    <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="finished  coding. there are still bugs related to the insert (there may be more bugs)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FacultyWithPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyWithPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TechnionTournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TechnionTournament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TwoThreeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" afterDir="false" />
     </list>
     <list id="f2097a46-8581-4464-8459-e910946733e2" name="Changes by shoef" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +65,13 @@
       <option name="project" value="LOCAL" />
       <updated>1673443785115</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎00002" summary="finished  coding. there are still bugs related to the insert (there may be more bugs)">
+      <created>1673711522806</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1673711522806</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +92,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="Finished the abstract classes and started to build the concrete classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the abstract classes and started to build the concrete classes" />
+    <MESSAGE value="finished  coding. there are still bugs related to the insert (there may be more bugs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished  coding. there are still bugs related to the insert (there may be more bugs)" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="faculties" />
+        <watch expression="faculties" />
+        <watch expression="tournament.facultyTreeById" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

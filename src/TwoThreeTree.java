@@ -27,10 +27,22 @@ public abstract class TwoThreeTree<T> {
         if(x==null) return;
         x.setKey(x.getLeft().getKey());
         if(x.getMiddle()!=null){
-            x.setKey(x.getMiddle().getKey());
+            if (x.getMiddle().getPlusInf()){
+                x.setPlusInf(true);
+            }else{
+                x.setKey(x.getMiddle().getKey());
+                x.setPlusInf(false);
+            }
+            //problem
         }
         if(x.getRight()!=null){
-            x.setKey(x.getRight().getKey());
+            if (x.getRight().getPlusInf()){
+                x.setPlusInf(true);
+            }else{
+                x.setKey(x.getRight().getKey());
+                x.setPlusInf(false);
+            }
+            //problem
         }
     }
 
@@ -54,7 +66,7 @@ public abstract class TwoThreeTree<T> {
         Node<T> m=x.getMiddle();
         Node<T> r=x.getRight();
         if (r==null){
-            if(compareNodes(z,l)>0){
+            if(compareNodes(z,l)<0){
                 setChildren(x,z,l,m);
             }else if(compareNodes(z,m)<0){
                 setChildren(x,l,z,m);
@@ -70,7 +82,7 @@ public abstract class TwoThreeTree<T> {
         }else if(compareNodes(z,m)<0){
             setChildren(x,l,z,null);
             setChildren(y,m,r,null);
-        }else if(compareNodes(z,m)<0){
+        }else if(compareNodes(z,r)<0){
             setChildren(x,l,m,null);
             setChildren(y,z,r, null);
         } else {
@@ -161,7 +173,9 @@ public abstract class TwoThreeTree<T> {
         Node<T> nextNode = root;
         //boolean b=true;
         while(nextNode.getLeft() != null){//problem
-            if (compareNodes(z,nextNode.getLeft())<0){ nextNode = nextNode.getLeft();}
+            if (compareNodes(z,nextNode.getLeft())<0){
+                nextNode = nextNode.getLeft();
+            }
             else if (compareNodes(z,nextNode.getMiddle())<0){
                 nextNode = nextNode.getMiddle();
             }//problem
@@ -170,17 +184,16 @@ public abstract class TwoThreeTree<T> {
             }
         }
         //problem
-
         Leaf<T> nextLeaf = ((Leaf<T>)nextNode);
-        //moved
+        Node<T> papa = nextLeaf.getP();
+        Node<T> split = insert_And_Split(papa, z);
         z.setSuccessor(nextLeaf);
         if (nextLeaf.getPredecessor()!=null) {
             z.setPredecessor(nextLeaf.getPredecessor());
             nextLeaf.getPredecessor().setSuccessor(z);
         }
         ((Leaf<T>)nextNode).setPredecessor(z);
-        Node<T> papa = nextLeaf.getP();
-        Node<T> split = insert_And_Split(papa, z);
+
         while(papa!=root){
             papa = papa.getP();
             if(split != null){

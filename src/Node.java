@@ -46,7 +46,6 @@ public class Node<T>{
 
     public void setPlusInf(Boolean plusInf) {
         this.plusInf = plusInf;
-        this.minusInf = !plusInf;
     }
 
     public Boolean getMinusInf() {
@@ -55,7 +54,6 @@ public class Node<T>{
 
     public void setMinusInf(Boolean minusInf) {
         this.minusInf = minusInf;
-        this.plusInf = !minusInf;
     }
     public Node<T> getLeft() {
         return left;
