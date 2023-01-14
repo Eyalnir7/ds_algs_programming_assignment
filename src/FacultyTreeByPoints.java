@@ -7,4 +7,9 @@ public class FacultyTreeByPoints extends TwoThreeTreeWithMax<FacultyWithPlayers>
         }
         return comparePoints;
     }
+    public Leaf<FacultyWithPlayers> search(int id, int numpoints){
+        FacultyWithPlayers temp = new FacultyWithPlayers(new Faculty(id, ""));
+        temp.setNumPoints(numpoints);
+        return super.search(temp);
+    }
 }

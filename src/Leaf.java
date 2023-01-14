@@ -29,4 +29,10 @@ public class Leaf<T> extends Node<T>{
         this.successor = successor;
         this.predecessor = predecessor;
     }
+
+    public Leaf(T key){
+        super(key, null);
+        this.successor = null;
+        this.predecessor = null;
+    }
 }

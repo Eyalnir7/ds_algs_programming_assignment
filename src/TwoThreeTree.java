@@ -153,7 +153,11 @@ public abstract class TwoThreeTree<T> {
         }
     }
 
-    public void insert(Leaf<T> z){
+    public void insert(T z){
+        insertAux(new Leaf<T>(z));
+    }
+
+    public void insertAux(Leaf<T> z){
         Node<T> nextNode = root;
         while(nextNode.getLeft() != null){
             if(compareNodes(z,nextNode.getLeft())<0) nextNode = nextNode.getLeft();

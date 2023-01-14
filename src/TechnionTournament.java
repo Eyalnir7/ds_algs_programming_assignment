@@ -10,7 +10,7 @@ public class TechnionTournament implements Tournament{
 
     @Override
     public void addFacultyToTournament(Faculty faculty) {
-
+        
     }
 
     @Override
