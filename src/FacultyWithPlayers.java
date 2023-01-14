@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class FacultyWithPlayers {
     private Faculty faculty;
     private int numPoints;
-    private ArrayList<Player> players;
+    private ArrayList<PlayerWithGoals> players;
 
     public FacultyWithPlayers(Faculty faculty) {
         this.faculty = faculty;
@@ -28,11 +28,11 @@ public class FacultyWithPlayers {
         this.numPoints = numPoints;
     }
 
-    public ArrayList<Player> getPlayers() {
+    public ArrayList<PlayerWithGoals> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(ArrayList<PlayerWithGoals> players) {
         this.players = players;
     }
 

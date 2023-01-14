@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="Finished the abstract classes and started to build the concrete classes">
+      <change afterPath="$PROJECT_DIR$/src/PlayerTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FacultyTreeById.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyTreeById.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FacultyTreeByPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyTreeByPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Leaf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Leaf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FacultyWithPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyWithPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TechnionTournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TechnionTournament.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TwoThreeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" afterDir="false" />
     </list>
-    <list id="f2097a46-8581-4464-8459-e910946733e2" name="Changes by shoef" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TwoThreeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTree.java" afterDir="false" />
-    </list>
+    <list id="f2097a46-8581-4464-8459-e910946733e2" name="Changes by shoef" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +25,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TwoThreeTree.java">
-      <ranges>
-        <range start1="56" end1="57" start2="56" end2="57" changelist="f2097a46-8581-4464-8459-e910946733e2" />
-        <range start1="155" end1="156" start2="155" end2="160" changelist="159d6764-83f5-46fd-970e-8e7f586c6805" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -47,22 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
-  }
-}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ds_algs_programming_assignment" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671810112176</updated>
       <workItem from="1671810114393" duration="5311000" />
-      <workItem from="1673113276663" duration="33703000" />
+      <workItem from="1673113276663" duration="29361000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1673443785115</created>
@@ -81,14 +68,7 @@
       <option name="project" value="LOCAL" />
       <updated>1673443785115</updated>
     </task>
-    <task id="LOCAL-00002" summary="Finished the abstract classes and started to build the concrete classes">
-      <created>1673460720192</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1673460720192</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
