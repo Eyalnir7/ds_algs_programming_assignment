@@ -58,11 +58,28 @@ public class TechnionTournament implements Tournament{
             changedPlayer.setNumGoals(changedPlayer.getNumGoals() + 1);
             playerTree.insert(changedPlayer);
         }
+        FacultyWithPlayers faculty1WithPoints = facultyTreeByPoints.search(faculty_id1,faculty1.getKey().getNumPoints()).getKey();
+        FacultyWithPlayers faculty2WithPoints = facultyTreeByPoints.search(faculty_id2,faculty2.getKey().getNumPoints()).getKey();
+        facultyTreeByPoints.delete(faculty1WithPoints);
+        facultyTreeByPoints.delete(faculty2WithPoints);
+
+        if (winner==1) {
+            faculty1WithPoints.setNumPoints(faculty1WithPoints.getNumPoints() + 3);
+        }else if (winner==2){
+            faculty2WithPoints.setNumPoints(faculty2WithPoints.getNumPoints() + 3);
+        }else{
+            faculty1WithPoints.setNumPoints(faculty1WithPoints.getNumPoints() + 1);
+            faculty2WithPoints.setNumPoints(faculty2WithPoints.getNumPoints() + 1);
+        }
+        facultyTreeByPoints.insert(faculty1WithPoints);
+        facultyTreeByPoints.insert(faculty2WithPoints);
     }
 
     @Override
     public void getTopScorer(Player player) {
-        player = playerTree.getMax().getKey().getPlayer();
+        Player tempPlayer = playerTree.getMax().getKey().getPlayer();
+        player.setName(tempPlayer.getName());
+        player.setId(tempPlayer.getId());
     }
 
     @Override
@@ -95,7 +112,7 @@ public class TechnionTournament implements Tournament{
             currentFaculty=currentFaculty.getPredecessor();
             index++;
         }
-        if (ascending==true && faculties.size()==k){
+        if (ascending && faculties.size()==k){
             for (int i = 0; i < k/2 ; i++) {
                 Faculty tmp=faculties.get(i);
                 faculties.set(i,faculties.get(k/2-i));
@@ -114,7 +131,7 @@ public class TechnionTournament implements Tournament{
             currentPlayer=currentPlayer.getPredecessor();
             index++;
         }
-        if (ascending==true && players.size()==k){
+        if (ascending && players.size()==k){
             for (int i = 0; i < k/2 ; i++) {
                 Player tmp=players.get(i);
                 players.set(i,players.get(k/2-i));
@@ -125,7 +142,9 @@ public class TechnionTournament implements Tournament{
 
     @Override
     public void getTheWinner(Faculty faculty) {
-        faculty=facultyTreeByPoints.getMax().getKey().getFaculty();
+        Faculty faculty2=facultyTreeByPoints.getMax().getKey().getFaculty();
+        faculty.setId(faculty2.getId());
+        faculty.setName(faculty2.getName());
     }
 
     ///TODO - add below your own variables and methods

@@ -100,7 +100,7 @@ public abstract class TwoThreeTree<T> {
 
     public Node<T> borrowOrMerge(Node<T> y){
         Node<T> z = y.getP();
-        if(compareNodes(y, z.getLeft()) == 0){
+        if(y == z.getLeft()){
             Node<T> x = z.getMiddle();
             if(x.getRight()!=null){
                 setChildren(y, y.getLeft(), x.getLeft(), null);
@@ -112,7 +112,7 @@ public abstract class TwoThreeTree<T> {
             }
             return z;
         }
-        if(compareNodes(y, z.getMiddle()) == 0){
+        if(y == z.getMiddle()){
             Node<T> x = z.getLeft();
             if(x.getRight() != null){
                 setChildren(y, x.getRight(), y.getLeft(), null);
@@ -144,10 +144,10 @@ public abstract class TwoThreeTree<T> {
         Node<T> y = x.getP();
         x.getPredecessor().setSuccessor(x.getSuccessor());
         x.getSuccessor().setPredecessor(x.getPredecessor());
-        if(compareNodes(x, y.getLeft()) == 0){
+        if(x == y.getLeft()){
             setChildren(y, y.getMiddle(), y.getRight(), null);
         }
-        else if(compareNodes(x, y.getMiddle()) == 0){
+        else if(x == y.getMiddle()){
             setChildren(y, y.getLeft(), y.getRight(), null);
         }
         else {
@@ -155,7 +155,7 @@ public abstract class TwoThreeTree<T> {
         }
         while(y!=null){
             if(y.getMiddle()==null){
-                if(compareNodes(y, root) != 0){
+                if(y != root){
                     y = borrowOrMerge(y);
                 }
                 else{
