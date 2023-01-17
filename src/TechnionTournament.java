@@ -54,9 +54,10 @@ public class TechnionTournament implements Tournament{
     public void playGame(int faculty_id1, int faculty_id2, int winner,
                          ArrayList<Integer> faculty1_goals, ArrayList<Integer> faculty2_goals) {
         //we need to update the tree such that it will still remain sorted
+        //need to update facultytree by points
         Leaf<FacultyWithPlayers> faculty1 = facultyTreeById.search(faculty_id1);
         Leaf<FacultyWithPlayers> faculty2 = facultyTreeById.search(faculty_id2);
-        for (int i = 0; i < faculty1_goals.size(); i++) {
+        for (int i = 0; i < faculty1_goals.size(); i++) {//is in complexity?
             for (int j = 0; j <faculty1.getKey().getPlayers().size() ; j++) {
                 if (faculty1_goals.get(i) == faculty1.getKey().getPlayers().get(j).getId()){
                     PlayerWithGoals changedPlayer = faculty1.getKey().getPlayers().get(j);
