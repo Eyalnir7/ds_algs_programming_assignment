@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="current bug is wrong topScorer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FacultyTreeById.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyTreeById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FacultyTreeByPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyTreeByPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FacultyWithPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyWithPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerWithGoals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerWithGoals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TechnionTournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TechnionTournament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TwoThreeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTreeWithMax.java" afterDir="false" />
     </list>
     <list id="f2097a46-8581-4464-8459-e910946733e2" name="Changes by shoef" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +113,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TechnionTournament.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="19" />
+          <line>49</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

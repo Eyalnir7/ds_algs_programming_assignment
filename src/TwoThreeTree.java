@@ -1,5 +1,5 @@
 public abstract class TwoThreeTree<T> {
-    private Node<T> root;
+    protected Node<T> root;
 
     public TwoThreeTree() {
         this.root = new Node<T>(true, false);
@@ -14,8 +14,14 @@ public abstract class TwoThreeTree<T> {
     //return 0 if node1 = node2
     //return negative if node1 < node2
     public int compareNodes(Node<T> node1, Node<T> node2){
-        if(node1.getPlusInf()) return 1;
-        if(node1.getMinusInf()) return -1;
+        if(node1.getPlusInf()){
+            if(node2.getPlusInf()) return 0;
+            return 1;
+        }
+        if(node1.getMinusInf()){
+            if(node2.getMinusInf()) return 0;
+            return -1;
+        }
         if(node2.getPlusInf()) return -1;
         if(node2.getMinusInf()) return 1;
         return compareKeys(node1.getKey(), node2.getKey());
@@ -62,9 +68,9 @@ public abstract class TwoThreeTree<T> {
     }
 
     public Node<T> insert_And_Split(Node<T> x, Node<T> z){
-        Node<T> l=x.getLeft();
-        Node<T> m=x.getMiddle();
-        Node<T> r=x.getRight();
+        Node<T> l = x.getLeft();
+        Node<T> m = x.getMiddle();
+        Node<T> r = x.getRight();
         if (r==null){
             if(compareNodes(z,l)<0){
                 setChildren(x,z,l,m);
@@ -108,7 +114,7 @@ public abstract class TwoThreeTree<T> {
         }
         if(compareNodes(y, z.getMiddle()) == 0){
             Node<T> x = z.getLeft();
-            if(z.getRight() != null){
+            if(x.getRight() != null){
                 setChildren(y, x.getRight(), y.getLeft(), null);
                 setChildren(x, x.getLeft(), x.getMiddle(), null);
             }
@@ -130,11 +136,11 @@ public abstract class TwoThreeTree<T> {
         return z;
     }
 
-    public void Delete(T key){
-        DeleteAux(search(key));
+    public void delete(T key){
+        deleteAux(search(key));
     }
 
-    public void DeleteAux(Leaf<T> x){
+    public void deleteAux(Leaf<T> x){
         Node<T> y = x.getP();
         x.getPredecessor().setSuccessor(x.getSuccessor());
         x.getSuccessor().setPredecessor(x.getPredecessor());
@@ -149,8 +155,8 @@ public abstract class TwoThreeTree<T> {
         }
         while(y!=null){
             if(y.getMiddle()==null){
-                if(compareNodes(y, root) == 0){
-                    borrowOrMerge(y);
+                if(compareNodes(y, root) != 0){
+                    y = borrowOrMerge(y);
                 }
                 else{
                     setRoot(y.getLeft());
@@ -171,19 +177,17 @@ public abstract class TwoThreeTree<T> {
 
     public void insertAux(Leaf<T> z){
         Node<T> nextNode = root;
-        //boolean b=true;
-        while(nextNode.getLeft() != null){//problem
+        while(nextNode.getLeft() != null){
             if (compareNodes(z,nextNode.getLeft())<0){
                 nextNode = nextNode.getLeft();
             }
             else if (compareNodes(z,nextNode.getMiddle())<0){
                 nextNode = nextNode.getMiddle();
-            }//problem
+            }
             else {
                 nextNode = nextNode.getRight();
             }
         }
-        //problem
         Leaf<T> nextLeaf = ((Leaf<T>)nextNode);
         Node<T> papa = nextLeaf.getP();
         Node<T> split = insert_And_Split(papa, z);

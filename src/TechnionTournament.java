@@ -6,48 +6,37 @@ public class TechnionTournament implements Tournament{
 
     @Override
     public void init() {
-        facultyTreeById=new FacultyTreeById();
-        facultyTreeByPoints=new FacultyTreeByPoints();
-        playerTree=new PlayerTree();
+        facultyTreeById = new FacultyTreeById();
+        facultyTreeByPoints = new FacultyTreeByPoints();
+        playerTree = new PlayerTree();
     }
 
     @Override
     public void addFacultyToTournament(Faculty faculty) {
-        FacultyWithPlayers facultyWithPlayers=new FacultyWithPlayers(faculty);
+        FacultyWithPlayers facultyWithPlayers = new FacultyWithPlayers(faculty);
         facultyTreeById.insert(facultyWithPlayers);
         facultyTreeByPoints.insert(facultyWithPlayers);
     }
 
     @Override
     public void removeFacultyFromTournament(int faculty_id){
-        //Leaf<FacultyWithPlayers> deletedFaculty = facultyTreeById.search(faculty_id);
-        facultyTreeById.Delete(new FacultyWithPlayers(new Faculty(faculty_id,"")));
-        //do we need to make the player a free agent now?
-        //we need to figure out how to delete faculty by id
+        Leaf<FacultyWithPlayers> deletedFaculty = facultyTreeById.search(faculty_id);
+        facultyTreeById.delete(faculty_id);
+        facultyTreeByPoints.delete(deletedFaculty.getKey());
     }
 
     @Override
-    public void addPlayerToFaculty(int faculty_id,Player player) {
+    public void addPlayerToFaculty(int faculty_id, Player player) {
         Leaf<FacultyWithPlayers> requiredFaculty = facultyTreeById.search(faculty_id);
-        PlayerWithGoals playerWithGoals=new PlayerWithGoals(player);
-        requiredFaculty.getKey().getPlayers().add(playerWithGoals);
+        PlayerWithGoals playerWithGoals = new PlayerWithGoals(player);
+        requiredFaculty.getKey().addPlayer(playerWithGoals);
         playerTree.insert(playerWithGoals);
     }
 
     @Override
     public void removePlayerFromFaculty(int faculty_id, int player_id) {
         Leaf<FacultyWithPlayers> requiredFaculty = facultyTreeById.search(faculty_id);
-        PlayerWithGoals playerWithGoals = null;
-        for (int i = 0; i <requiredFaculty.getKey().getPlayers().size() ; i++) {
-            if (requiredFaculty.getKey().getPlayers().get(i).getPlayer().getId() == player_id){
-                playerWithGoals=requiredFaculty.getKey().getPlayers().get(i);
-            }
-        }
-        if (playerWithGoals != null) {
-            requiredFaculty.getKey().getPlayers().remove(playerWithGoals);
-            //it will delete the player also from facultyTreeByPoints
-            playerTree.Delete(playerWithGoals);
-        }
+        requiredFaculty.getKey().deletePlayerById(player_id);
     }
 
     @Override
@@ -57,33 +46,23 @@ public class TechnionTournament implements Tournament{
         //need to update facultytree by points
         Leaf<FacultyWithPlayers> faculty1 = facultyTreeById.search(faculty_id1);
         Leaf<FacultyWithPlayers> faculty2 = facultyTreeById.search(faculty_id2);
-        for (int i = 0; i < faculty1_goals.size(); i++) {//is in complexity?
-            for (int j = 0; j <faculty1.getKey().getPlayers().size() ; j++) {
-                if (faculty1_goals.get(i) == faculty1.getKey().getPlayers().get(j).getId()){
-                    PlayerWithGoals changedPlayer = faculty1.getKey().getPlayers().get(j);
-                    playerTree.Delete(changedPlayer);
-                    changedPlayer.setNumGoals(changedPlayer.getNumGoals()+1);
-                    playerTree.insert(changedPlayer);
-                }
-            }
+        for (Integer playerId: faculty1_goals) {
+            PlayerWithGoals changedPlayer = faculty1.getKey().getPlayerById(playerId);
+            playerTree.delete(changedPlayer);
+            changedPlayer.setNumGoals(changedPlayer.getNumGoals() + 1);
+            playerTree.insert(changedPlayer);
         }
-        for (int i = 0; i < faculty2_goals.size(); i++) {
-            for (int j = 0; j <faculty2.getKey().getPlayers().size() ; j++) {
-                if (faculty2_goals.get(i) == faculty2.getKey().getPlayers().get(j).getId()){
-                    PlayerWithGoals changedPlayer = faculty2.getKey().getPlayers().get(j);
-                    playerTree.Delete(changedPlayer);
-                    changedPlayer.setNumGoals(changedPlayer.getNumGoals()+1);
-                    playerTree.insert(changedPlayer);
-                }
-            }
+        for (Integer playerId: faculty2_goals) {
+            PlayerWithGoals changedPlayer = faculty2.getKey().getPlayerById(playerId);
+            playerTree.delete(changedPlayer);
+            changedPlayer.setNumGoals(changedPlayer.getNumGoals() + 1);
+            playerTree.insert(changedPlayer);
         }
-
-
     }
 
     @Override
     public void getTopScorer(Player player) {
-        player=playerTree.getMax().getKey().getPlayer();
+        player = playerTree.getMax().getKey().getPlayer();
     }
 
     @Override

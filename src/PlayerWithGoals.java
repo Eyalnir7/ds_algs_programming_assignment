@@ -3,7 +3,7 @@ public class PlayerWithGoals {
     private int numGoals;
 
     public PlayerWithGoals(Player player) {
-        this.player = player;
+        this.player = new Player(player.getId(), player.getName());
         this.numGoals = 0;
     }
 

@@ -10,8 +10,24 @@ public class FacultyWithPlayers {
         this.players=new ArrayList<>();
         this.numPoints=0;
     }
-
-
+    public void deletePlayerById(int id){
+        for (PlayerWithGoals player : players) {
+            if (player.getId() == id){
+                players.remove(player);
+            }
+        }
+    }
+    public PlayerWithGoals getPlayerById(int id){
+        for (PlayerWithGoals player : players) {
+            if (player.getId() == id){
+                return player;
+            }
+        }
+        return null;
+    }
+    public void addPlayer(PlayerWithGoals player){
+        players.add(player);
+    }
     public Faculty getFaculty() {
         return faculty;
     }
