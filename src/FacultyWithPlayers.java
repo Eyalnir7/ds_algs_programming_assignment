@@ -14,6 +14,7 @@ public class FacultyWithPlayers {
         for (PlayerWithGoals player : players) {
             if (player.getId() == id){
                 players.remove(player);
+                return;
             }
         }
     }

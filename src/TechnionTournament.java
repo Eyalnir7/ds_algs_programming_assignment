@@ -87,19 +87,22 @@ public class TechnionTournament implements Tournament{
         Leaf<FacultyWithPlayers> requiredFaculty = facultyTreeById.search(faculty_id);
         ArrayList<PlayerWithGoals> facultyPlayers = requiredFaculty.getKey().getPlayers();
         PlayerWithGoals playerWithMaxGoals = facultyPlayers.get(0);
-        int maxGoals=facultyPlayers.get(0).getNumGoals();
+        int maxGoals = playerWithMaxGoals.getNumGoals();
         for (int i = 1; i <facultyPlayers.size() ; i++) {
             if (facultyPlayers.get(i).getNumGoals() >= maxGoals){
-                if (facultyPlayers.get(i).getNumGoals()==maxGoals
-                        && Integer.compare(facultyPlayers.get(i).getId(),playerWithMaxGoals.getId()) < 0){
-                    playerWithMaxGoals=facultyPlayers.get(i); //equal goals but smaller id
-                }else{
-                    playerWithMaxGoals=facultyPlayers.get(i); //more goals
+                if (facultyPlayers.get(i).getNumGoals()==maxGoals){
+                        if (facultyPlayers.get(i).getId() < playerWithMaxGoals.getId()){
+                            playerWithMaxGoals=facultyPlayers.get(i); //equal goals but smaller id
+                        }
+                }else {//if bigger
+                    playerWithMaxGoals = facultyPlayers.get(i); //more goals
                     maxGoals = playerWithMaxGoals.getNumGoals();
                 }
             }
         }
-        player=playerWithMaxGoals.getPlayer();
+        Player tempPlayer=playerWithMaxGoals.getPlayer();
+        player.setName(tempPlayer.getName());
+        player.setId(tempPlayer.getId());
     }
 
     @Override
@@ -115,8 +118,8 @@ public class TechnionTournament implements Tournament{
         if (ascending && faculties.size()==k){
             for (int i = 0; i < k/2 ; i++) {
                 Faculty tmp=faculties.get(i);
-                faculties.set(i,faculties.get(k/2-i));
-                faculties.set(k/2-i,tmp);
+                faculties.set(i,faculties.get(k-1-i));
+                faculties.set(k-1-i,tmp);
             }
         }
     }
@@ -134,8 +137,8 @@ public class TechnionTournament implements Tournament{
         if (ascending && players.size()==k){
             for (int i = 0; i < k/2 ; i++) {
                 Player tmp=players.get(i);
-                players.set(i,players.get(k/2-i));
-                players.set(k/2-i,tmp);
+                players.set(i,players.get(k-1-i));
+                players.set(k-1-i,tmp);
             }
         }
     }

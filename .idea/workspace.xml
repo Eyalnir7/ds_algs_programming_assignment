@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="commit before changing whenever we want to check if x == y to x ==y instead of compareNodes(x, y) == 0">
+    <list default="true" id="159d6764-83f5-46fd-970e-8e7f586c6805" name="Changes" comment="fucking finally passed tests">
+      <change afterPath="$PROJECT_DIR$/src/Tests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FacultyWithPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FacultyWithPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TechnionTournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TechnionTournament.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TwoThreeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TwoThreeTree.java" afterDir="false" />
     </list>
     <list id="f2097a46-8581-4464-8459-e910946733e2" name="Changes by shoef" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +34,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ds_algs_programming_assignment" />
@@ -41,6 +42,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <module name="ds_algs_programming_assignment" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Tests" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -84,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673988005037</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fucking finally passed tests">
+      <created>1673990631105</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673990631105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,7 +127,8 @@
     <MESSAGE value="finished  coding. there are still bugs related to the insert (there may be more bugs)" />
     <MESSAGE value="current bug is wrong topScorer" />
     <MESSAGE value="commit before changing whenever we want to check if x == y to x ==y instead of compareNodes(x, y) == 0" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit before changing whenever we want to check if x == y to x ==y instead of compareNodes(x, y) == 0" />
+    <MESSAGE value="fucking finally passed tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="fucking finally passed tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -122,6 +142,11 @@
           <url>file://$PROJECT_DIR$/src/Main.java</url>
           <line>112</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests.java</url>
+          <line>219</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
